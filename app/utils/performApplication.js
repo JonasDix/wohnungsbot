@@ -46,12 +46,39 @@ export default function* performApplication(
     yield sleep(50);
   }
 
+  const persons = [
+    {
+      salutation: 'Herr',
+      firstName: 'Franz',
+      lastName: 'Gerhardson',
+      eMail: 'dennislanger01@gmail.com',
+      street: 'Wilsnacker Str.',
+      houseNumber: '38',
+      postcode: '10559',
+      city: 'Berlin'
+    },
+    {
+      salutation: 'Herr',
+      firstName: 'Peter',
+      lastName: 'Léon',
+      eMail: 'dennislanger01@gmail.com',
+      street: 'Amselstraße',
+      houseNumber: '6',
+      postcode: '90439',
+      city: 'Nürnberg'
+    }
+  ];
+
+  const person = persons[Math.floor(Math.random() * persons.length)];
+
   const personalDataFormFillingDescription = generatePersonalDataFormFillingDescription(
-    configuration.contactData
+    person
   );
 
+  const text = `SEHR_GEEHRTE_NAME,\nich intressiere mich sehr für die Wohnung IN_ORT. Ich suche schon seit einer ganzen Weile nach einer Wohnung in VIERTEL und würde mich sehr freuen, wenn es klappt.\n\nBei Nachfragen können Sie mich gerne per E-Mail erreichen.\n\nBeste Grüße\n${person.firstName} ${person.lastName}`;
+
   const applicationText = applicationTextBuilder(
-    configuration.applicationText,
+    text,
     flatOverview.address,
     flatOverview.contactDetails
   );
