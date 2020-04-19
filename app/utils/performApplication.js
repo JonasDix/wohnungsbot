@@ -8,6 +8,7 @@ import {
 } from '../actions/formFiller';
 import applicationTextBuilder from '../flat/applicationTextBuilder';
 import { sendApplicationNotificationEmail } from '../actions/email';
+import { getRandomizedApplication } from './randomizedApplication';
 import type { OverviewDataEntry } from '../reducers/data';
 import type { Dispatch } from '../reducers/types';
 import type ElectronUtils from './electronUtils';
@@ -45,7 +46,7 @@ export default function* performApplication(
 
     yield sleep(50);
   }
-
+  /*
   const persons = [
     {
       salutation: 'Herr',
@@ -69,13 +70,13 @@ export default function* performApplication(
     }
   ];
 
-  const person = persons[Math.floor(Math.random() * persons.length)];
-
+  const person = persons[Math.floor(Math.random() * persons.length)]; */
+  const { person, text } = getRandomizedApplication();
   const personalDataFormFillingDescription = generatePersonalDataFormFillingDescription(
     person
   );
 
-  const text = `SEHR_GEEHRTE_NAME,\nich intressiere mich sehr für die Wohnung IN_ORT. Ich suche schon seit einer ganzen Weile nach einer Wohnung in VIERTEL und würde mich sehr freuen, wenn es klappt.\n\nBei Nachfragen können Sie mich gerne per E-Mail erreichen.\n\nBeste Grüße\n${person.firstName} ${person.lastName}`;
+  //const text = `SEHR_GEEHRTE_NAME,\nich intressiere mich sehr für die Wohnung IN_ORT. Ich suche schon seit einer ganzen Weile nach einer Wohnung in VIERTEL und würde mich sehr freuen, wenn es klappt.\n\nBei Nachfragen können Sie mich gerne per E-Mail erreichen.\n\nBeste Grüße\n${person.firstName} ${person.lastName}`;
 
   const applicationText = applicationTextBuilder(
     text,
