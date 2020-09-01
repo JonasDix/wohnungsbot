@@ -81,7 +81,8 @@ export const generatePersonalDataFormFillingDescription = (
 
 const MOVE_IN_WHEN_VALUES = {
   [MOVE_IN_WHEN.NOW]: 'FROM_NOW',
-  [MOVE_IN_WHEN.FLEXIBLE]: 'FLEXIBLE'
+  [MOVE_IN_WHEN.FLEXIBLE]: 'FLEXIBLE',
+  [MOVE_IN_WHEN.FLEXIBLE]: 'CONCRETE'
 };
 const MOVE_IN_WHO_VALUES = {
   [MOVE_IN_WHO.SINGLE]: 'ONE_PERSON',
@@ -229,7 +230,7 @@ async function fillSelectField(
 
 export function fillForm(
   fieldFillingDescription: FieldFillingDesciption,
-  fillAsLittleAsPossible: boolean = true
+  fillAsLittleAsPossible: boolean = false
 ) {
   return async (dispatch: Dispatch, getState: GetState) => {
     const { webContents } = getState().electron.views.puppet.browserView;

@@ -112,7 +112,7 @@ export type AdditionalInformation = {|
   moveInWho: MoveInWho,
   animals: string,
   employmentStatus: EmploymentStatus,
-  income: ?number,
+  //income: ?number,
   hasDocumentsReady: boolean
 |};
 
